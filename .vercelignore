@@ -1,0 +1,17 @@
+# Python backend services (prevent Vercel from treating as serverless functions)
+api/
+config/
+db/
+features/
+forecasting/
+ingestion/
+nlp/
+tests/
+.venv/
+env/
+venv/
+sopul.pdf
+*.py
+*.sql
+*.db
+*.sqlite3
