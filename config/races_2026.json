@@ -1,0 +1,184 @@
+[
+  {
+    "race_id": "2026_SEN_GA",
+    "state": "GA",
+    "chamber": "Senate",
+    "district": null,
+    "historical_lean": 1.2,
+    "kalshi_market_ticker": "KXSENGA26",
+    "candidates": [
+      {
+        "candidate_id": "jon_ossoff",
+        "full_name": "Jon Ossoff",
+        "party": "DEM",
+        "incumbent": true,
+        "keywords": ["ossoff", "jon ossoff", "senator ossoff"],
+        "official_handles": ["@ossoff", "jonossoff", "senossoff"]
+      },
+      {
+        "candidate_id": "brian_kemp",
+        "full_name": "Brian Kemp",
+        "party": "REP",
+        "incumbent": false,
+        "keywords": ["kemp", "brian kemp", "governor kemp"],
+        "official_handles": ["@briankempga", "brianpkemp", "govkemp"]
+      }
+    ]
+  },
+  {
+    "race_id": "2026_SEN_MI",
+    "state": "MI",
+    "chamber": "Senate",
+    "district": null,
+    "historical_lean": 2.1,
+    "kalshi_market_ticker": "KXSENMI26",
+    "candidates": [
+      {
+        "candidate_id": "gary_peters",
+        "full_name": "Gary Peters",
+        "party": "DEM",
+        "incumbent": true,
+        "keywords": ["peters", "gary peters", "senator peters"],
+        "official_handles": ["@garypeters", "senpeters"]
+      },
+      {
+        "candidate_id": "john_james",
+        "full_name": "John James",
+        "party": "REP",
+        "incumbent": false,
+        "keywords": ["john james", "rep john james"],
+        "official_handles": ["@johnjamesmi", "repjohnjames"]
+      }
+    ]
+  },
+  {
+    "race_id": "2026_SEN_NC",
+    "state": "NC",
+    "chamber": "Senate",
+    "district": null,
+    "historical_lean": -1.8,
+    "kalshi_market_ticker": "KXSENNC26",
+    "candidates": [
+      {
+        "candidate_id": "roy_cooper",
+        "full_name": "Roy Cooper",
+        "party": "DEM",
+        "incumbent": false,
+        "keywords": ["roy cooper", "cooper", "governor cooper"],
+        "official_handles": ["@roycoopernc", "govroycooper"]
+      },
+      {
+        "candidate_id": "thom_tillis",
+        "full_name": "Thom Tillis",
+        "party": "REP",
+        "incumbent": true,
+        "keywords": ["thom tillis", "tillis", "senator tillis"],
+        "official_handles": ["@thomtillis", "senthomtillis"]
+      }
+    ]
+  },
+  {
+    "race_id": "2026_SEN_ME",
+    "state": "ME",
+    "chamber": "Senate",
+    "district": null,
+    "historical_lean": 1.5,
+    "kalshi_market_ticker": "KXSENME26",
+    "candidates": [
+      {
+        "candidate_id": "jared_golden",
+        "full_name": "Jared Golden",
+        "party": "DEM",
+        "incumbent": false,
+        "keywords": ["jared golden", "rep golden", "golden"],
+        "official_handles": ["@jaredgolden", "repgolden"]
+      },
+      {
+        "candidate_id": "susan_collins",
+        "full_name": "Susan Collins",
+        "party": "REP",
+        "incumbent": true,
+        "keywords": ["susan collins", "collins", "senator collins"],
+        "official_handles": ["@senatorcollins", "susancollins"]
+      }
+    ]
+  },
+  {
+    "race_id": "2026_SEN_TX",
+    "state": "TX",
+    "chamber": "Senate",
+    "district": null,
+    "historical_lean": -4.5,
+    "kalshi_market_ticker": "KXSENTX26",
+    "candidates": [
+      {
+        "candidate_id": "colin_allred",
+        "full_name": "Colin Allred",
+        "party": "DEM",
+        "incumbent": false,
+        "keywords": ["colin allred", "allred"],
+        "official_handles": ["@colinallredtx", "allredtx"]
+      },
+      {
+        "candidate_id": "john_cornyn",
+        "full_name": "John Cornyn",
+        "party": "REP",
+        "incumbent": true,
+        "keywords": ["john cornyn", "cornyn", "senator cornyn"],
+        "official_handles": ["@johncornyn", "sencornyn"]
+      }
+    ]
+  },
+  {
+    "race_id": "2026_HOUSE_MI_07",
+    "state": "MI",
+    "chamber": "House",
+    "district": "07",
+    "historical_lean": 0.5,
+    "kalshi_market_ticker": "KXHOUSEMI0726",
+    "candidates": [
+      {
+        "candidate_id": "curtis_hertel",
+        "full_name": "Curtis Hertel",
+        "party": "DEM",
+        "incumbent": false,
+        "keywords": ["curtis hertel", "hertel"],
+        "official_handles": ["@curtishertel"]
+      },
+      {
+        "candidate_id": "tom_barrett",
+        "full_name": "Tom Barrett",
+        "party": "REP",
+        "incumbent": true,
+        "keywords": ["tom barrett", "barrett"],
+        "official_handles": ["@tombarrettmi"]
+      }
+    ]
+  },
+  {
+    "race_id": "2026_GOV_TX",
+    "state": "TX",
+    "chamber": "Governor",
+    "district": null,
+    "historical_lean": -5.2,
+    "kalshi_market_ticker": "KXGOVTX26",
+    "candidates": [
+      {
+        "candidate_id": "beto_orourke",
+        "full_name": "Beto O'Rourke",
+        "party": "DEM",
+        "incumbent": false,
+        "keywords": ["beto", "beto o'rourke", "orourke"],
+        "official_handles": ["@betoorourke"]
+      },
+      {
+        "candidate_id": "greg_abbott",
+        "full_name": "Greg Abbott",
+        "party": "REP",
+        "incumbent": true,
+        "keywords": ["greg abbott", "abbott", "governor abbott"],
+        "official_handles": ["@gregabbott_tx", "govabbott"]
+      }
+    ]
+  }
+]

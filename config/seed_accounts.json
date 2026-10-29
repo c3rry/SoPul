@@ -1,0 +1,85 @@
+{
+  "youtube_channels": [
+    {
+      "channel_id": "UC16niRr50-MSBwiO3YDb3RA",
+      "channel_name": "BBC News",
+      "lean": "neutral"
+    },
+    {
+      "channel_id": "UCupvZG-5ko_eiXAupbDfxWw",
+      "channel_name": "CNN",
+      "lean": "lean_left"
+    },
+    {
+      "channel_id": "UCXIJgqnII2ZOINSWNOGFThA",
+      "channel_name": "Fox News",
+      "lean": "lean_right"
+    },
+    {
+      "channel_id": "UCeY0bbntWzzVIaj2z3QigXg",
+      "channel_name": "NBC News",
+      "lean": "neutral"
+    },
+    {
+      "channel_id": "UCvJJ_dzjViJCoLf5uKUTwoA",
+      "channel_name": "CNBC Television",
+      "lean": "neutral"
+    },
+    {
+      "channel_id": "UCaXkIU1QidjPwiAYu6GcHjg",
+      "channel_name": "MSNBC",
+      "lean": "left"
+    },
+    {
+      "channel_id": "UC4fEpmxH_7knf-Vv2_K4aNQ",
+      "channel_name": "The Hill",
+      "lean": "neutral"
+    }
+  ],
+  "tiktok_accounts": [
+    {
+      "handle": "nowthisimpact",
+      "lean": "lean_left"
+    },
+    {
+      "handle": "dailywire",
+      "lean": "right"
+    },
+    {
+      "handle": "underthedesknews",
+      "lean": "lean_left"
+    },
+    {
+      "handle": "washingtonpost",
+      "lean": "neutral"
+    },
+    {
+      "handle": "politico",
+      "lean": "neutral"
+    }
+  ],
+  "subreddits": [
+    "politics",
+    "PoliticalDiscussion",
+    "Georgia",
+    "Michigan",
+    "NorthCarolina",
+    "TexasPolitics",
+    "Maine",
+    "midterms2026",
+    "elections"
+  ],
+  "bluesky_keywords": [
+    "2026 election",
+    "midterms 2026",
+    "senate race",
+    "ossoff",
+    "kemp",
+    "peters",
+    "john james",
+    "roy cooper",
+    "thom tillis",
+    "susan collins",
+    "jared golden"
+  ]
+}

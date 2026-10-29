@@ -1,0 +1,24 @@
+{
+  "census_midterm_turnout_baseline": {
+    "18_29": 0.36,
+    "30_49": 0.48,
+    "50_64": 0.65,
+    "65_plus": 0.73
+  },
+  "platform_calibration_factors": {
+    "youtube": 0.85,
+    "reddit": 0.50,
+    "tiktok": 0.40,
+    "bluesky": 0.60
+  },
+  "engagement_heuristics": {
+    "text_platform_view_multiplier": 10.0,
+    "author_diminishing_exponent": 0.5,
+    "min_resonance_views_denominator": 100,
+    "interaction_weights": {
+      "likes": 1.0,
+      "comments": 2.0,
+      "shares": 3.0
+    }
+  }
+}

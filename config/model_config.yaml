@@ -1,0 +1,56 @@
+polling:
+  decay_half_life_days: 14.0
+  student_t_df: 5
+  sigma_poll: 4.5
+  sample_size_cap: 3000
+  sample_size_denom: 1000
+  voter_screen_weights:
+    LV: 1.25
+    RV: 1.00
+    A: 0.75
+
+prediction_market:
+  liquidity_tau_contracts: 5000
+  liquidity_k: 1.2
+  min_liquid_volume: 500
+  spread_penalty_gamma: 0.5
+  clamp_epsilon: 0.001
+  arbitrage_threshold: 0.08
+  min_arbitrage_liquidity: 0.40
+  volume_surge_freeze_ratio: 3.0
+
+nlp:
+  base_model: "microsoft/deberta-v3-base"
+  lora_r: 16
+  lora_alpha: 32
+  max_seq_length: 512
+  loss_weight_ideo: 0.4
+  loss_weight_stance: 0.6
+
+features:
+  lambda_prior: 50.0
+  controversy_threshold: 0.25
+  controversy_penalty_factor: -0.5
+  ema_span_days: 7
+
+forecasting:
+  delta_max_margin: 2.00
+  sigma_race_total: 4.60
+  elasticnet_l1_ratio: 0.5
+  elasticnet_alpha: 0.1
+  monte_carlo_runs: 10000
+  national_error_sigma: 0.035
+  house_baseline:
+    safe_rep: 195
+    safe_dem: 185
+    competitive_seats: 55
+  senate_baseline:
+    safe_rep: 46
+    safe_dem: 44
+    competitive_seats: 10
+
+circuit_breaker:
+  consecutive_failure_threshold: 3
+  failure_window_minutes: 15
+  min_daily_posts: 10
+  recovery_check_interval_hours: 1
