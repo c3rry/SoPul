@@ -1,0 +1,17 @@
+sopul.pdf
+.env
+kalshi_key.txt
+*.md
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+dist/
+build/
+*.egg-info/
+.venv/
+env/
+venv/
