@@ -2,12 +2,12 @@
 
 import hashlib
 from abc import ABC, abstractmethod
-from datetime import datetime, timezone
-from typing import List, Optional, Set
+from datetime import datetime
+
 from pydantic import BaseModel, Field
 
 
-def hash_author_handle(handle: str, official_handles: Optional[Set[str]] = None) -> str:
+def hash_author_handle(handle: str, official_handles: set[str] | None = None) -> str:
     """Hash non-public creator handles with SHA-256 for privacy.
 
     Official candidate accounts listed in configuration retain plain handles.
@@ -24,11 +24,11 @@ class RawPost(BaseModel):
     post_id: str = Field(..., description="Unique platform-scoped post identifier")
     platform: str = Field(..., description="Source platform name: youtube, tiktok, bluesky, reddit")
     author_handle: str = Field(..., description="Raw creator handle or username")
-    author_handle_hash: Optional[str] = Field(None, description="SHA-256 hashed handle for non-public creators")
+    author_handle_hash: str | None = Field(None, description="SHA-256 hashed handle for non-public creators")
     published_at: datetime = Field(..., description="Publication timestamp with timezone")
-    caption: Optional[str] = Field("", description="Post text caption or submission title")
-    transcript: Optional[str] = Field("", description="Cleaned spoken transcript or body text")
-    raw_url: Optional[str] = Field("", description="Canonical web URL to source post")
+    caption: str | None = Field("", description="Post text caption or submission title")
+    transcript: str | None = Field("", description="Cleaned spoken transcript or body text")
+    raw_url: str | None = Field("", description="Canonical web URL to source post")
 
     def model_post_init(self, __context) -> None:
         if not self.author_handle_hash:
@@ -48,11 +48,9 @@ class SocialIngestor(ABC):
     """Abstract interface for all zero-cost platform ingestors."""
 
     @abstractmethod
-    async def fetch_recent_posts(self, since: datetime) -> List[RawPost]:
+    async def fetch_recent_posts(self, since: datetime) -> list[RawPost]:
         """Fetch newly published posts since the given timestamp without commercial API fees."""
-        pass
 
     @abstractmethod
     async def extract_metadata(self, url: str) -> PostMetadata:
         """Fetch latest engagement counters for a specific post URL."""
-        pass

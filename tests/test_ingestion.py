@@ -1,7 +1,6 @@
 """Pulse2026 Ingestion Unit Tests."""
 
 from datetime import date, datetime, timezone
-import pytest
 
 from ingestion.base import RawPost, hash_author_handle
 from ingestion.bluesky_firehose import BlueskyFirehoseIngestor

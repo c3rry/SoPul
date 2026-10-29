@@ -2,10 +2,10 @@
 
 import csv
 import io
-import json
 import random
-from datetime import date, datetime, timedelta, timezone
-from typing import Any, Dict, List, Optional
+from datetime import date, datetime, timedelta
+from typing import Any
+
 from pydantic import BaseModel, Field
 
 
@@ -16,7 +16,7 @@ class NormalizedPoll(BaseModel):
     race_id: str
     pollster: str
     pollster_rating: float = Field(1.0, ge=0.5, le=1.5)
-    start_date: Optional[date] = None
+    start_date: date | None = None
     end_date: date
     sample_size: int = Field(..., ge=100)
     population_type: str = Field("LV", description="LV (Likely Voters), RV (Registered), A (Adults)")
@@ -29,10 +29,10 @@ class PollingIngestor:
     """Parser and normalizer for CSV/JSON public polling feeds."""
 
     @staticmethod
-    def parse_csv(csv_content: str) -> List[NormalizedPoll]:
+    def parse_csv(csv_content: str) -> list[NormalizedPoll]:
         """Parse raw CSV polling data into normalized polling records."""
         reader = csv.DictReader(io.StringIO(csv_content))
-        polls: List[NormalizedPoll] = []
+        polls: list[NormalizedPoll] = []
 
         for idx, row in enumerate(reader):
             try:
@@ -75,13 +75,13 @@ class PollingIngestor:
 
     @staticmethod
     def generate_synthetic_polls(
-        races: List[Dict[str, Any]],
+        races: list[dict[str, Any]],
         num_polls_per_race: int = 5,
-        reference_date: Optional[date] = None,
-    ) -> List[NormalizedPoll]:
+        reference_date: date | None = None,
+    ) -> list[NormalizedPoll]:
         """Generate realistic synthetic 2026 battleground polls for testing and demonstrations."""
         ref = reference_date or date.today()
-        polls: List[NormalizedPoll] = []
+        polls: list[NormalizedPoll] = []
         pollsters = [
             ("Marist College", 1.3),
             ("Monmouth University", 1.2),

@@ -1,9 +1,9 @@
 """SQLAlchemy Declarative Models for Pulse2026."""
 
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
 
 from sqlalchemy import (
+    JSON,
     Boolean,
     Column,
     Date,
@@ -12,7 +12,6 @@ from sqlalchemy import (
     ForeignKey,
     Index,
     Integer,
-    JSON,
     String,
     Text,
 )

@@ -2,7 +2,7 @@
 
 import asyncio
 from datetime import datetime, timezone
-from typing import List, Optional
+
 import httpx
 
 from ingestion.base import PostMetadata, RawPost, SocialIngestor
@@ -11,7 +11,7 @@ from ingestion.base import PostMetadata, RawPost, SocialIngestor
 class RedditStreamIngestor(SocialIngestor):
     """Reddit political stream consumer using public unauthenticated endpoints."""
 
-    def __init__(self, subreddits: List[str], keywords: List[str]):
+    def __init__(self, subreddits: list[str], keywords: list[str]):
         self.subreddits = subreddits
         self.keywords = [k.lower() for k in keywords]
         self.headers = {"User-Agent": "Pulse2026Bot/0.1 (election forecasting; zero commercial)"}
@@ -21,10 +21,10 @@ class RedditStreamIngestor(SocialIngestor):
         text_lower = text.lower()
         return any(kw in text_lower for kw in self.keywords)
 
-    async def fetch_subreddit_posts(self, subreddit: str, since: datetime) -> List[RawPost]:
+    async def fetch_subreddit_posts(self, subreddit: str, since: datetime) -> list[RawPost]:
         """Fetch newly published submissions from subreddit /new.json."""
         url = f"https://www.reddit.com/r/{subreddit}/new.json?limit=25"
-        posts: List[RawPost] = []
+        posts: list[RawPost] = []
 
         async with httpx.AsyncClient(headers=self.headers, timeout=10.0) as client:
             try:
@@ -72,11 +72,11 @@ class RedditStreamIngestor(SocialIngestor):
 
         return posts
 
-    async def fetch_recent_posts(self, since: datetime) -> List[RawPost]:
+    async def fetch_recent_posts(self, since: datetime) -> list[RawPost]:
         """Fetch posts across all registered subreddits."""
         tasks = [self.fetch_subreddit_posts(sub, since) for sub in self.subreddits]
         results = await asyncio.gather(*tasks, return_exceptions=True)
-        posts: List[RawPost] = []
+        posts: list[RawPost] = []
         for r in results:
             if isinstance(r, list):
                 posts.extend(r)

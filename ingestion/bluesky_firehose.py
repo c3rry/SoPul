@@ -3,7 +3,7 @@
 import asyncio
 import json
 from datetime import datetime, timezone
-from typing import Callable, List, Optional, Set
+
 import websockets
 
 from ingestion.base import PostMetadata, RawPost, SocialIngestor
@@ -16,10 +16,10 @@ DEFAULT_JETSTREAM_URL = (
 class BlueskyFirehoseIngestor(SocialIngestor):
     """Real-time Bluesky Jetstream consumer filtered against election keyword dictionaries."""
 
-    def __init__(self, keywords: List[str], ws_url: str = DEFAULT_JETSTREAM_URL):
+    def __init__(self, keywords: list[str], ws_url: str = DEFAULT_JETSTREAM_URL):
         self.keywords = [k.lower() for k in keywords]
         self.ws_url = ws_url
-        self._collected_posts: List[RawPost] = []
+        self._collected_posts: list[RawPost] = []
         self._running = False
 
     def matches_keywords(self, text: str) -> bool:
@@ -27,7 +27,7 @@ class BlueskyFirehoseIngestor(SocialIngestor):
         text_lower = text.lower()
         return any(kw in text_lower for kw in self.keywords)
 
-    async def listen(self, duration_seconds: float = 10.0) -> List[RawPost]:
+    async def listen(self, duration_seconds: float = 10.0) -> list[RawPost]:
         """Connect to Jetstream WebSocket for a bounded window and collect matching posts."""
         self._collected_posts = []
         end_time = asyncio.get_event_loop().time() + duration_seconds
@@ -87,7 +87,7 @@ class BlueskyFirehoseIngestor(SocialIngestor):
 
         return self._collected_posts
 
-    async def fetch_recent_posts(self, since: datetime) -> List[RawPost]:
+    async def fetch_recent_posts(self, since: datetime) -> list[RawPost]:
         """Fetch posts collected during recent stream monitoring."""
         posts = await self.listen(duration_seconds=5.0)
         return [p for p in posts if p.published_at >= since]

@@ -3,7 +3,7 @@
 import asyncio
 import re
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+
 import feedparser
 import httpx
 from yt_dlp import YoutubeDL
@@ -14,7 +14,7 @@ from ingestion.base import PostMetadata, RawPost, SocialIngestor
 def clean_vtt_subtitles(vtt_text: str) -> str:
     """Clean WebVTT transcript by stripping timestamps and deduplicating rolling lines."""
     lines = vtt_text.splitlines()
-    cleaned_lines: List[str] = []
+    cleaned_lines: list[str] = []
     prev_line = ""
 
     timestamp_regex = re.compile(
@@ -40,7 +40,7 @@ def clean_vtt_subtitles(vtt_text: str) -> str:
 class YouTubeRSSIngestor(SocialIngestor):
     """Zero-quota YouTube monitor extracting Shorts from unauthenticated RSS feeds."""
 
-    def __init__(self, channel_ids: List[str]):
+    def __init__(self, channel_ids: list[str]):
         self.channel_ids = channel_ids
         self.ydl_opts = {
             "skip_download": True,
@@ -51,10 +51,10 @@ class YouTubeRSSIngestor(SocialIngestor):
             "no_warnings": True,
         }
 
-    async def fetch_channel_feed(self, channel_id: str, since: datetime) -> List[RawPost]:
+    async def fetch_channel_feed(self, channel_id: str, since: datetime) -> list[RawPost]:
         """Fetch unauthenticated channel RSS feed and extract video metadata."""
         url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
-        posts: List[RawPost] = []
+        posts: list[RawPost] = []
 
         async with httpx.AsyncClient(timeout=10.0) as client:
             try:
@@ -122,11 +122,11 @@ class YouTubeRSSIngestor(SocialIngestor):
             pass
         return ""
 
-    async def fetch_recent_posts(self, since: datetime) -> List[RawPost]:
+    async def fetch_recent_posts(self, since: datetime) -> list[RawPost]:
         """Fetch posts across all registered channel IDs."""
         tasks = [self.fetch_channel_feed(cid, since) for cid in self.channel_ids]
         results = await asyncio.gather(*tasks, return_exceptions=True)
-        posts: List[RawPost] = []
+        posts: list[RawPost] = []
         for r in results:
             if isinstance(r, list):
                 posts.extend(r)

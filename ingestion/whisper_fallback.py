@@ -3,7 +3,7 @@
 import asyncio
 import os
 import tempfile
-from typing import Optional
+
 from yt_dlp import YoutubeDL
 
 
@@ -17,8 +17,8 @@ class EphemeralWhisperTranscriber:
     def _get_model(self):
         """Lazy load the faster-whisper model."""
         if self._model is None:
-            from faster_whisper import WhisperModel
             import torch
+            from faster_whisper import WhisperModel
 
             device = "cuda" if torch.cuda.is_available() else "cpu"
             compute_type = "float16" if device == "cuda" else "int8"

@@ -2,6 +2,8 @@ sopul.pdf
 .env
 kalshi_key.txt
 *.md
+*.db
+*.sqlite3
 __pycache__/
 *.py[cod]
 *$py.class

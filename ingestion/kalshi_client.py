@@ -1,8 +1,8 @@
 """Pulse2026 Kalshi API v2 Public Market Client ($0 Ingestion Cost)."""
 
-import asyncio
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any
+
 import httpx
 from pydantic import BaseModel, Field
 
@@ -29,7 +29,7 @@ class KalshiClient:
         self.base_url = base_url
         self.timeout = timeout
 
-    async def fetch_market_snapshot(self, ticker: str) -> Optional[KalshiMarketSnapshot]:
+    async def fetch_market_snapshot(self, ticker: str) -> KalshiMarketSnapshot | None:
         """Fetch real-time orderbook and 24h volume for a public market ticker."""
         url = f"{self.base_url}/markets/{ticker}"
         async with httpx.AsyncClient(timeout=self.timeout) as client:
@@ -42,7 +42,7 @@ class KalshiClient:
             except Exception:
                 return None
 
-    def _parse_market_data(self, ticker: str, data: Dict[str, Any]) -> KalshiMarketSnapshot:
+    def _parse_market_data(self, ticker: str, data: dict[str, Any]) -> KalshiMarketSnapshot:
         """Parse raw Kalshi API response into a normalized snapshot."""
         yes_bid = data.get("yes_bid") or 0
         yes_ask = data.get("yes_ask") or 100

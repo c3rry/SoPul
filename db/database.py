@@ -1,7 +1,8 @@
 """Pulse2026 Asynchronous Database Session Engine."""
 
 import os
-from typing import AsyncGenerator
+from collections.abc import AsyncGenerator
+
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
     async_sessionmaker,
@@ -12,12 +13,12 @@ from sqlalchemy.orm import declarative_base
 DEFAULT_PG_URL = "postgresql+asyncpg://postgres:postgres@localhost:5432/pulse2026"
 DEFAULT_SQLITE_URL = "sqlite+aiosqlite:///pulse2026.db"
 
-# Allow selecting database URL via environment or fallback
-DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_PG_URL)
+# If DATABASE_URL is not explicitly set in environment, default to SQLite for zero-setup demo/offline execution
+DATABASE_URL = os.getenv("DATABASE_URL", DEFAULT_SQLITE_URL)
 
 try:
     if DATABASE_URL.startswith("postgresql+asyncpg"):
-        import asyncpg  # verify availability
+        import asyncpg  # noqa: F401
         engine = create_async_engine(
             DATABASE_URL,
             pool_size=int(os.getenv("DB_POOL_SIZE", "20")),
@@ -31,8 +32,8 @@ try:
             echo=os.getenv("DB_ECHO", "false").lower() == "true",
         )
 except (ImportError, ModuleNotFoundError):
-    # Fallback to aiosqlite for hermetic testing and environments without asyncpg
-    DATABASE_URL = os.getenv("TEST_DATABASE_URL", DEFAULT_SQLITE_URL)
+    # Fallback to SQLite if asyncpg driver is unavailable
+    DATABASE_URL = DEFAULT_SQLITE_URL
     engine = create_async_engine(
         DATABASE_URL,
         echo=os.getenv("DB_ECHO", "false").lower() == "true",

@@ -4,7 +4,7 @@ import asyncio
 import random
 import re
 from datetime import datetime, timezone
-from typing import List, Optional
+
 from yt_dlp import YoutubeDL
 
 from ingestion.base import PostMetadata, RawPost, SocialIngestor
@@ -18,7 +18,7 @@ BOT_CHALLENGE_REGEX = re.compile(
 class TikTokExtractor(SocialIngestor):
     """TikTok video metadata and subtitle scraper with request jitter."""
 
-    def __init__(self, target_accounts: List[str], min_jitter: float = 3.5, max_jitter: float = 8.0):
+    def __init__(self, target_accounts: list[str], min_jitter: float = 3.5, max_jitter: float = 8.0):
         self.target_accounts = target_accounts
         self.min_jitter = min_jitter
         self.max_jitter = max_jitter
@@ -32,9 +32,9 @@ class TikTokExtractor(SocialIngestor):
         """Check if scraped content is a bot challenge or CAPTCHA screen."""
         return bool(BOT_CHALLENGE_REGEX.search(text))
 
-    async def fetch_recent_posts(self, since: datetime) -> List[RawPost]:
+    async def fetch_recent_posts(self, since: datetime) -> list[RawPost]:
         """Scrape recent public TikTok posts for target accounts."""
-        posts: List[RawPost] = []
+        posts: list[RawPost] = []
         for account in self.target_accounts:
             await self._apply_jitter()
             account_url = f"https://www.tiktok.com/@{account.lstrip('@')}"
